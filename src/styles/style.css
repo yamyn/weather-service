@@ -39,8 +39,8 @@ img {
 }
 
 .visually-hidden:not(:focus):not(:active),
-input[type="checkbox"].visually-hidden,
-input[type="radio"].visually-hidden {
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -54,7 +54,43 @@ input[type="radio"].visually-hidden {
   overflow: hidden;
 }
 
-/* .container {
+.container {
   width: 1200px;
   margin: 0 auto;
-} */
+}
+
+.form-section {
+  height: 200px;
+}
+
+.search-form {
+  width: 600px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-form__input,
+.search-form__button {
+  height: 50px;
+  font-size: 17px;
+  border-radius: 15px;
+  outline: 0;
+}
+
+.search-form__input {
+  padding-left: 30px;
+  flex: 0 0 65%;
+  border: 1px solid #000;
+}
+
+.search-form__button {
+  flex: 0 0 30%;
+  border: 0;
+  cursor: pointer;
+  background-color: #0093ff;
+  color: #fff;
+  text-transform: uppercase;
+}

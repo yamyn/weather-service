@@ -1,7 +1,7 @@
 {
-  "name": "weather-service",
-  "version": "1.0",
-  "description": "weather-service, that use OpenWeatherMap",
+  "name": "webpack-starter-kit",
+  "version": "1.1.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.mode development --config ./webpack/config.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yamyn/weather-service"
+    "url": "git+https://github.com/luxplanjay/webpack-starter-kit.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/luxplanjay/webpack-starter-kit/issues"
   },
-  "homepage": "https://github.com/yamyn/weather-service#readme",
+  "homepage": "https://github.com/luxplanjay/webpack-starter-kit#readme",
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
