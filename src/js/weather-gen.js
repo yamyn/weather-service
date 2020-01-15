@@ -13,26 +13,44 @@ refs.form.addEventListener('submit', getCityNameHandler);
 
 function getCityNameHandler(form) {
   form.preventDefault();
+  refs.weatherSection;
 
   const searchQuery = form.currentTarget.elements.query.value;
   const id = toSearchCityId(searchQuery);
 
-  weatherService.fethWeather(id).then(dataArray => {
-    console.log('Масив з 40 объектов погоды через каждые 3 часа: ');
-    console.log(dataArray);
+  if (!id) {
+    return;
+  }
 
-    const filtredArr = getWeatherForThreePm(dataArray);
+  clearWeatherList();
 
-    console.log('Отфильтровал оставив объекты с временем 3 часа дня: ');
-    console.log(filtredArr);
+  weatherService
+    .fethWeather(id)
+    .then(dataArray => {
+      console.log('Масив з 40 объектов погоды через каждые 3 часа: ');
+      console.log(dataArray);
 
-    const fiveDaysObj = parsArrForFiveDaysLook(filtredArr);
+      const filtredArr = getWeatherForThreePm(dataArray);
 
-    console.log('Создал новые объекты в виде, удобном для парсинга шаблона: ');
-    console.log(fiveDaysObj);
+      console.log('Отфильтровал оставив объекты с временем 3 часа дня: ');
+      console.log(filtredArr);
 
-    isertWeatherList(fiveDaysObj);
-  });
+      const fiveDaysObj = parsArrForFiveDaysLook(filtredArr);
+
+      console.log(
+        'Создал новые объекты в виде, удобном для парсинга шаблона: ',
+      );
+      console.log(fiveDaysObj);
+
+      isertWeatherList(fiveDaysObj);
+    })
+    .catch(error => {
+      console.warn(error);
+    });
+}
+
+function clearWeatherList() {
+  refs.weatherSection.innerHTML = '';
 }
 
 function isertWeatherList(obj) {
@@ -41,10 +59,13 @@ function isertWeatherList(obj) {
 }
 
 function toSearchCityId(promptCity) {
-  const cityId = cityList.find(
+  const searchCity = cityList.find(
     city => city.name.toLowerCase() === promptCity.toLowerCase(),
-  ).id;
-  return cityId;
+  );
+  if (!searchCity) {
+    return alert('Your city not found!!!');
+  }
+  return searchCity.id;
 }
 
 function getWeatherForThreePm(array) {

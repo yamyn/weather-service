@@ -1,4 +1,4 @@
-const baseUrl = 'http://api.openweathermap.org/data/2.5/forecast';
+const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
 const apiKey = '&APPID=f2b983e5135ce658d5120b9538220520';
 export default {
   fethWeather(id) {
