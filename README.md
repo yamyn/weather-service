@@ -1,1 +1,1 @@
-# weather-service
+# webpack-starter-kit

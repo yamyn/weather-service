@@ -93,4 +93,52 @@ input[type='radio'].visually-hidden {
   background-color: #0093ff;
   color: #fff;
   text-transform: uppercase;
+  transition: background-color 200ms linear;
+}
+
+.search-form__button:hover,
+.search-form__button:focus {
+  background-color: #0095ff4b;
+  border: 1px solid #0093ff;
+}
+
+.five-days-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.five-days-list__item {
+  list-style: none;
+}
+
+/* .five-days-list__day:hover,
+.five-days-list__link:hover,
+.five-days-list__day:focus,
+.five-days-list__link:focus {
+  background-color: #2f546e48;
+} */
+
+.five-days-list__item:hover .five-days-list__day,
+.five-days-list__item:focus .five-days-list__day,
+.five-days-list__item:hover .five-days-list__link,
+.five-days-list__item:focus .five-days-list__link {
+  background-color: #2f546e48;
+}
+
+.five-days-list__day {
+  margin: 0 0 20px;
+  padding: 15px;
+  text-align: center;
+}
+
+.five-days-list__day,
+.five-days-list__link {
+  background-color: #59dee75e;
+  transition: background-color 200ms linear;
+}
+
+.five-days-list__link {
+  display: block;
+  padding-top: 70px;
+  height: 250px;
 }
