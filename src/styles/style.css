@@ -102,21 +102,19 @@ input[type='radio'].visually-hidden {
   border: 1px solid #0093ff;
 }
 
+.weather-list-section {
+  margin-bottom: 50px;
+}
+
 .five-days-list {
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
 }
 
 .five-days-list__item {
   list-style: none;
 }
-
-/* .five-days-list__day:hover,
-.five-days-list__link:hover,
-.five-days-list__day:focus,
-.five-days-list__link:focus {
-  background-color: #2f546e48;
-} */
 
 .five-days-list__item:hover .five-days-list__day,
 .five-days-list__item:focus .five-days-list__day,
@@ -139,6 +137,33 @@ input[type='radio'].visually-hidden {
 
 .five-days-list__link {
   display: block;
-  padding-top: 70px;
-  height: 250px;
+  height: 500px;
+  padding-top: 50px;
+  text-decoration: none;
+  color: #000;
+}
+
+.five-days-list__img {
+  margin: 0 auto;
+}
+
+.weather-short-list {
+  padding: 50px 10px 0;
+}
+
+.weather-short-list__item {
+  list-style: none;
+  /* display: flex;
+  justify-content: space-between; */
+}
+
+.weather-short-list__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.weather-short-list__title {
+}
+
+.weather-short-list__value {
+  padding-left: 5px;
 }
