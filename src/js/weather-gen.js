@@ -27,26 +27,28 @@ function getCityNameHandler(form) {
   weatherService
     .fethWeather(id)
     .then(dataArray => {
-      console.log('Масив з 40 объектов погоды через каждые 3 часа: ');
-      console.log(dataArray);
-
-      const filtredArr = getWeatherForThreePm(dataArray);
-
-      console.log('Отфильтровал оставив объекты с временем 3 часа дня: ');
-      console.log(filtredArr);
-
-      const fiveDaysObj = parsArrForFiveDaysLook(filtredArr);
-
-      console.log(
-        'Создал новые объекты в виде, удобном для парсинга шаблона: ',
-      );
-      console.log(fiveDaysObj);
-
-      isertWeatherList(fiveDaysObj);
+      generateFiveDaysList(dataArray);
     })
     .catch(error => {
       console.warn(error);
     });
+}
+
+function generateFiveDaysList(dataArray) {
+  console.log('Масив з 40 объектов погоды через каждые 3 часа: ');
+  console.log(dataArray);
+
+  const filtredArr = getWeatherForThreePm(dataArray);
+
+  console.log('Отфильтровал оставив объекты с временем 3 часа дня: ');
+  console.log(filtredArr);
+
+  const fiveDaysObj = parsArrForFiveDaysLook(filtredArr);
+
+  console.log('Создал новые объекты в виде, удобном для парсинга шаблона: ');
+  console.log(fiveDaysObj);
+
+  isertWeatherList(fiveDaysObj);
 }
 
 function clearWeatherList() {
