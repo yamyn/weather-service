@@ -13,7 +13,6 @@ refs.form.addEventListener('submit', getCityNameHandler);
 
 function getCityNameHandler(form) {
   form.preventDefault();
-  refs.weatherSection;
 
   const searchQuery = form.currentTarget.elements.query.value;
   const id = toSearchCityId(searchQuery);
