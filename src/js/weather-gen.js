@@ -38,9 +38,11 @@ function generateFiveDaysList(dataArray) {
   console.log('Масив з 40 объектов погоды через каждые 3 часа: ');
   console.log(dataArray);
 
-  const filtredArr = getWeatherForThreePm(dataArray);
+  const filtredArr = getWeatherForCurrentPm(dataArray);
 
-  console.log('Отфильтровал оставив объекты с временем 3 часа дня: ');
+  console.log(
+    'Отфильтровал оставив объекты с временем таким же как в первого: ',
+  );
   console.log(filtredArr);
 
   const fiveDaysObj = parsArrForFiveDaysLook(filtredArr);
@@ -70,8 +72,8 @@ function toSearchCityId(promptCity) {
   return searchCity.id;
 }
 
-function getWeatherForThreePm(array) {
-  const currentWeatherTime = '3:00 PM';
+function getWeatherForCurrentPm(array) {
+  const currentWeatherTime = moment(array[0].dt_txt).format('LT');
   return array.filter(
     elem => moment(elem.dt_txt).format('LT') === currentWeatherTime,
   );
