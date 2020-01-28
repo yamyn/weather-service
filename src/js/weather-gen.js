@@ -10,7 +10,7 @@ const refs = {
   fiveDaysList: document.querySelector('#five-days-list'),
   forDayList: document.querySelector('#for-day-list'),
   weatherTitle: document.querySelector('#weather-title'),
-  backButton: document.querySelector('#back-btn'),
+  backArrow: document.querySelector('#back-arrow'),
 };
 
 const weatherAllInfoObj = {};
@@ -18,7 +18,7 @@ let searchQuery;
 
 refs.form.addEventListener('submit', getCityNameHandler);
 refs.fiveDaysList.addEventListener('click', openOneDayListHandler);
-refs.backButton.addEventListener('click', toBackFiveListHandler);
+refs.backArrow.addEventListener('click', toBackFiveListHandler);
 
 function getCityNameHandler(event) {
   event.preventDefault();
@@ -50,9 +50,12 @@ function getCityNameHandler(event) {
 
 function openOneDayListHandler(event) {
   event.preventDefault();
+  if (event.currentTarget === event.target) {
+    return;
+  }
   const ul = event.currentTarget;
   ul.classList.add('visually-hidden');
-  refs.backButton.classList.remove('visually-hidden');
+  refs.backArrow.classList.remove('visually-hidden');
 
   const focusedLi = event.target.closest('li.weather-list__item');
   const day = focusedLi.querySelector('#weather-list__date').textContent;
@@ -70,6 +73,8 @@ function openOneDayListHandler(event) {
 }
 
 function toBackFiveListHandler(event) {
+  event.preventDefault();
+  refs.backArrow.classList.add('visually-hidden');
   clearOneDayList();
   refs.weatherTitle.textContent = `Five day weather forecast in ${searchQuery}`;
   refs.fiveDaysList.classList.remove('visually-hidden');
