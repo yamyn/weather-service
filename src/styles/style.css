@@ -96,6 +96,27 @@ input[type='radio'].visually-hidden {
   border: 1px solid #0093ff;
 }
 
+.back-btn {
+  display: block;
+  padding: 0;
+  text-align: right;
+  width: 75px;
+  height: 50px;
+  background-color: transparent;
+  background-image: url(../img/icon/back.svg);
+  background-size: 50px;
+  background-position: 7px;
+  background-repeat: no-repeat;
+  border: 0;
+  cursor: pointer;
+  transition: background-position 250ms linear;
+}
+
+.back-btn:focus,
+.back-btn:hover {
+  background-position-x: 2px;
+}
+
 .weather-list-section {
   text-align: center;
   margin-bottom: 50px;

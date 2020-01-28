@@ -10,17 +10,20 @@ const refs = {
   fiveDaysList: document.querySelector('#five-days-list'),
   forDayList: document.querySelector('#for-day-list'),
   weatherTitle: document.querySelector('#weather-title'),
+  backButton: document.querySelector('#back-btn'),
 };
 
 const weatherAllInfoObj = {};
+let searchQuery;
 
 refs.form.addEventListener('submit', getCityNameHandler);
 refs.fiveDaysList.addEventListener('click', openOneDayListHandler);
+refs.backButton.addEventListener('click', toBackFiveListHandler);
 
 function getCityNameHandler(event) {
   event.preventDefault();
 
-  const searchQuery = event.currentTarget.elements.query.value;
+  searchQuery = event.currentTarget.elements.query.value;
   const id = toSearchCityId(searchQuery);
 
   if (!id) {
@@ -49,6 +52,7 @@ function openOneDayListHandler(event) {
   event.preventDefault();
   const ul = event.currentTarget;
   ul.classList.add('visually-hidden');
+  refs.backButton.classList.remove('visually-hidden');
 
   const focusedLi = event.target.closest('li.weather-list__item');
   const day = focusedLi.querySelector('#weather-list__date').textContent;
@@ -63,6 +67,12 @@ function openOneDayListHandler(event) {
   );
 
   isertWeatherList(dayDetailWeather, refs.forDayList);
+}
+
+function toBackFiveListHandler(event) {
+  clearOneDayList();
+  refs.weatherTitle.textContent = `Five day weather forecast in ${searchQuery}`;
+  refs.fiveDaysList.classList.remove('visually-hidden');
 }
 
 function generateFiveDaysList(dataArray) {
