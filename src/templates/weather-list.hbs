@@ -1,0 +1,24 @@
+<li class="weather-list__item item">
+        <h3 class="weather-list__date" id="weather-list__date">{{time}}</h3>
+        <a href="#" class="weather-list__link link">
+                <div class="weather-list__img-wrap"><img class="weather-list__img"
+                                src="https://openweathermap.org/img/wn/{{icon}}@2x.png" alt="{{alt}}"></div>
+                <ul class="weather-short-list list">
+                        <li class="weather-short-list__item item"><span
+                                        class="weather-short-list__title">Temperatura:</span><span
+                                        class="weather-short-list__value">{{tempCelsium}} ºC</span></li>
+                        <li class="weather-short-list__item item"><span class="weather-short-list__title">Humidity:
+                                </span><span class="weather-short-list__value">{{humidity}} %</span></li>
+                        <li class="weather-short-list__item item"><span class="weather-short-list__title">Cloudiness:
+                                </span><span class="weather-short-list__value">{{cloudiness}} %</span></li>
+                        <li class="weather-short-list__item item"><span class="weather-short-list__title">Wind:
+                                </span><span class="weather-short-list__value">{{wind}} meter/sec</span></li>
+                        <li class="weather-short-list__item item"><span class="weather-short-list__title">Pressure:
+                                </span><span class="weather-short-list__value">{{pressure}} hPa</span></li>
+                        <li class="weather-short-list__item item"><span
+                                        class="weather-short-list__title">{{phenomena}}</span><span
+                                        class="weather-short-list__value">{{precValue}}</span></li>
+
+                </ul>
+        </a>
+</li>
