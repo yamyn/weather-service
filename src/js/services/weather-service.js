@@ -1,10 +1,9 @@
-const baseUrl = 'https://api.openweathermap.org/data/2.5/forecast';
-const apiKey = '&APPID=f2b983e5135ce658d5120b9538220520';
+const baseUrl = 'https://open-weather-server.herokuapp.com/api/weather';
+
 export default {
-  fethWeather(id) {
-    const requestParams = `?id=${id}`;
-    return fetch(baseUrl + requestParams + apiKey)
-      .then(response => response.json())
-      .then(data => data.list);
+  fethWeather(value, reqType = 'city') {
+    let requestParams = `?city=${value}`;
+    if (reqType === 'day') requestParams = `/day?day=${value}`;
+    return fetch(baseUrl + requestParams).then(response => response.json());
   },
 };
