@@ -4,6 +4,6 @@ export default {
   fethWeather(value, reqType = 'city') {
     let requestParams = `?city=${value}`;
     if (reqType === 'day') requestParams = `/day?day=${value}`;
-    return fetch(baseUrl + requestParams).then(response => response.json());
+    return fetch(baseUrl + requestParams);
   },
 };

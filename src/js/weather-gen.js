@@ -2,6 +2,7 @@
 
 import weatherService from './services/weather-service';
 import weatherTemplate from '../templates/weather-list.hbs';
+import PNotify from 'pnotify/dist/es/PNotify.js';
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -24,14 +25,23 @@ function getCityNameHandler(event) {
 
   clearFiveDaysList();
   clearOneDayList();
-  refs.fiveDaysList.classList.remove('visually-hidden');
-
-  refs.weatherTitle.textContent = `Five day weather forecast in ${searchQuery}`;
-  refs.weatherTitle.classList.remove('visually-hidden');
 
   weatherService
     .fethWeather(searchQuery)
+    .then(response => {
+      if (response.status === 404) {
+        PNotify.error({
+          text: 'Your city not found!',
+          delay: 2000,
+        });
+        reject();
+      }
+      return response.json();
+    })
     .then(dataArray => {
+      refs.fiveDaysList.classList.remove('visually-hidden');
+      refs.weatherTitle.textContent = `Five day weather forecast in ${searchQuery}`;
+      refs.weatherTitle.classList.remove('visually-hidden');
       isertWeatherList(dataArray, refs.fiveDaysList);
     })
     .catch(error => {
